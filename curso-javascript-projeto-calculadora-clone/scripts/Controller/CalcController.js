@@ -15,7 +15,34 @@ class CalcController {
         this.initialize();
     }
 
+    
+    pasteFromClip(){
+        document.addEventListener('paste', event=>{
+            let text = event.clipboardData.getData('Text');
+            this.displayCalc = parseFloat(text);
+        })
+    }
+
+    copyToClipboard(){
+        let input = document.createElement('input');
+        input.value = this.displayCalc;
+        document.body.appendChild(input);
+        input.select();
+        /*
+            Adicionei essa nova forma pois é mais recomendada considerando que o exec command já está obsoleto
+            mesmo assim eu testo pra verficar se o object navigator existe no contexto do documento.
+        */ 
+        if(!navigator.clipboard){
+            document.execCommand();
+        }
+        navigator.clipboard.writeText(input.value);
+        input.remove();
+    }
+
     initialize(){
+        this.pasteFromClip()
+        //Para inicializar os eventos de teclado
+        this.initKeyboard();
         //Para manipular os botões
         this.initButtonsEvents();
         //Para atualizar corretamente a data e hora da calculadora
@@ -27,6 +54,63 @@ class CalcController {
         }, 1000);
 
         this.setLastNumberToDisplay();
+    }
+
+    initKeyboard(){
+        document.addEventListener('keyup', e=>{
+            console.log(e.key);
+
+            switch(e.key){
+            
+                case 'Escape':
+                    this.clearAll();
+                break;
+                
+                case 'Backspace':
+                    this.clearEntry();
+                break;
+    
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':    
+                    this.addOperator(e.key);
+                break;
+                
+                case 'Enter':
+                case "=":
+                    this.calc();
+                break;
+    
+                case '.':
+                case ',':
+                    this.addDot();
+                break;
+    
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this.addOperator(parseInt(e.key));
+                break;
+
+                case 'c':
+                    if(e.ctrlKey) this.copyToClipboard();
+                break;
+                case 'v':
+                    if(e.ctrlKey) this.pasteFromClip();
+                break;
+    
+            }
+
+        });
     }
 
     addEventListenerAll(element, events, fn){
@@ -43,6 +127,8 @@ class CalcController {
     //Limpa todos os campos
     clearAll(){
         this._operation = [];
+        this._lastNumber ='';
+        this._lastOperator = '';
         this.setLastNumberToDisplay();
     }
 
@@ -119,7 +205,6 @@ class CalcController {
         }
 
         this.setLastNumberToDisplay();
-
     }
 
     getLastItem(isOperator = true) {
@@ -148,7 +233,7 @@ class CalcController {
         let lastNumber = this.getLastItem(false);
         if(!lastNumber) lastNumber = 0;
 
-        this.displayCalc = lastNumber;
+        this.displayCalc = lastNumber.toString().slice(0,11);
     }
     
     //Adiciona ao array operator com base nas regras de negócio da calculadora
@@ -161,9 +246,6 @@ class CalcController {
             //Se o elemento digitado é um sinal, é necessário trocar o sinal.
             if(this.isOperator(value)){
                 this.setLastOperator(value);
-            //Se o elemento digitado não for um número
-            }else if(isNaN(value)){
-                console.log("Outra coisa");
             }
             //Esse else é só para quando o array operation estiver vazio
             else{
@@ -179,7 +261,7 @@ class CalcController {
             }else{
                 //Aqui é necessário concatenar o valor se o ultimo elemento no array for número, e não criar mais uma posição no array.
                 let correctOperatorString = lastOperator.toString() + value.toString();
-                this.setLastOperator(parseInt(correctOperatorString)); //necessário converter   
+                this.setLastOperator(correctOperatorString); //necessário converter   
                 this.setLastNumberToDisplay();
             }
         }
@@ -190,6 +272,19 @@ class CalcController {
     setError(){
         this.clearAll();
         this.displayCalc = "Error";
+    }
+
+    addDot(){
+        let lastOperation = this.getLastOperator();
+        
+        if(typeof lastOperation === 'string' && lastOperation && lastOperation.split.indexOf('.') > -1) return;
+
+        if(this.isOperator(lastOperation) || !lastOperation){
+            this.pushOperation('0.');
+        }else{
+            this.setLastOperator(lastOperation.toString() + '.');
+        }
+        this.setLastNumberToDisplay();
     }
 
     //Delegando as ações dos botões
@@ -229,7 +324,7 @@ class CalcController {
             break;
 
             case 'ponto':
-                this.addOperator('.');
+                this.addDot();
             break;
 
             case '0':
