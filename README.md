@@ -19,11 +19,11 @@ Este é um projeto de uma calculadora desenvolvida em JavaScript, imitando as fu
 
 - Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/calculadora-js.git
+git clone https://github.com/joao-souza-flooxai/section2-js-course-Calculator.git
 ```
 - Acesse a pasta do projeto:
 ```bash
-cd calculadora-js
+cd curso-javascript-projeto-calculadora-clone
 ```
 - Abra o arquivo index.html em um navegador.
 
