@@ -17,7 +17,8 @@ Este é um projeto de uma calculadora desenvolvida em JavaScript, imitando as fu
 
 # Como Usar:
 
-- Clone o repositório:
+- Acesse: https://section2-js-course-calculator.vercel.app/
+- Ou clone o repositório:
 ```bash
 git clone https://github.com/joao-souza-flooxai/section2-js-course-Calculator.git
 ```
