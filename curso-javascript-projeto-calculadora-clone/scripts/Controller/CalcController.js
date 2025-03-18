@@ -1,8 +1,8 @@
 class CalcController {
 
-    //Parei na aula 13(ontem-17/03)
     constructor(){
         //Underline denota atributo private
+        this._audio = new Audio('click.mp3');
         this._lastOperator = '';
         this._lastNumber = '';
         this._operation = [];
@@ -39,6 +39,11 @@ class CalcController {
         input.remove();
     }
 
+    playAudio(){
+        this._audio.currentTime = 0;
+        this._audio.play();
+    }
+
     initialize(){
         this.pasteFromClip()
         //Para inicializar os eventos de teclado
@@ -58,7 +63,7 @@ class CalcController {
 
     initKeyboard(){
         document.addEventListener('keyup', e=>{
-            console.log(e.key);
+            this.playAudio();
 
             switch(e.key){
             
@@ -162,7 +167,14 @@ class CalcController {
     }
 
     getResult(){
-       return  eval(this._operation.join(""));
+        try{
+            return  eval(this._operation.join(""));
+        }catch(e){
+            setTimeout(()=>{
+                this.setError();
+            },1);
+        }
+       
     }
 
     calc() {
@@ -233,7 +245,7 @@ class CalcController {
         let lastNumber = this.getLastItem(false);
         if(!lastNumber) lastNumber = 0;
 
-        this.displayCalc = lastNumber.toString().slice(0,11);
+        this.displayCalc = lastNumber;
     }
     
     //Adiciona ao array operator com base nas regras de negócio da calculadora
@@ -289,6 +301,7 @@ class CalcController {
 
     //Delegando as ações dos botões
     execBtn(textBtn){
+        this.playAudio();
         switch(textBtn){
             
             case 'ac':
@@ -407,8 +420,13 @@ class CalcController {
     get displayCalc(){
         return this._displayCalcEl.innerHTML;
     }
-    set displayCalc(value){
-       this._displayCalcEl.innerHTML = value; 
+    set displayCalc(value) {
+        if (value.toString().length > 10) {
+            this._displayCalcEl.innerHTML = "Range Limit";
+            return false;
+        }
+
+        this._displayCalcEl.innerHTML = value;
     }
     get currentDate(){
         return new Date();
