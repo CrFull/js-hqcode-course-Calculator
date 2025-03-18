@@ -2,12 +2,12 @@ Este é um projeto de uma calculadora desenvolvida em JavaScript, imitando as fu
 
 # Funcionalidades
 
-✅ Interface semelhante à calculadora do Windows.
-✅ Suporte a eventos de clique nos botões da tela.
-✅ Suporte a eventos do teclado, permitindo usar a calculadora com atalhos.
-✅ Uso da API de áudio (Audio) para tocar sons ao pressionar as teclas.
-✅ Operações matemáticas básicas: soma, subtração, multiplicação e divisão.
-✅ Atualização dinâmica do visor com expressões matemáticas.
+- ✅ Interface semelhante à calculadora do Windows.
+- ✅ Suporte a eventos de clique nos botões da tela.
+- ✅ Suporte a eventos do teclado, permitindo usar a calculadora com atalhos.
+- ✅ Uso da API de áudio (Audio) para tocar sons ao pressionar as teclas.
+- ✅ Operações matemáticas básicas: soma, subtração, multiplicação e divisão.
+- ✅ Atualização dinâmica do visor com expressões matemáticas.
 
 # Tecnologias Utilizadas
 
