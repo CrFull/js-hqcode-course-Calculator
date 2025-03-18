@@ -232,10 +232,9 @@ class CalcController {
 
         }
 
-        if (!lastItem) {
-
+        //Tive que alterar aqui porque o last item estava sendo considerado nulo mesmo tendo 0.
+        if (!lastItem && lastItem!=0) {
             lastItem = (isOperator) ? this._lastOperator : this._lastNumber;
-
         }
 
         return lastItem;
@@ -244,7 +243,6 @@ class CalcController {
     setLastNumberToDisplay(){
         let lastNumber = this.getLastItem(false);
         if(!lastNumber) lastNumber = 0;
-
         this.displayCalc = lastNumber;
     }
     
