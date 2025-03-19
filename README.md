@@ -1,50 +1,51 @@
-Este é um projeto de uma calculadora desenvolvida em JavaScript, imitando as funcionalidades da calculadora do Windows. O projeto foi criado como parte de um curso, com o objetivo de reforçar conceitos de manipulação do DOM, eventos e interações com o teclado.
+This is a project of a calculator developed in JavaScript, mimicking the functionalities of the Windows calculator. The project was created as part of a course, with the aim of reinforcing concepts of DOM manipulation, events and interactions with the keyboard.
 
-# Funcionalidades
+# Features
 
-- ✅ Interface semelhante à calculadora do Windows.
-- ✅ Suporte a eventos de clique nos botões da tela.
-- ✅ Suporte a eventos do teclado, permitindo usar a calculadora com atalhos.
-- ✅ Uso da API de áudio (Audio) para tocar sons ao pressionar as teclas.
-- ✅ Operações matemáticas básicas: soma, subtração, multiplicação e divisão.
-- ✅ Atualização dinâmica do visor com expressões matemáticas.
+- ✅ Interface similar to the Windows calculator.
+- ✅ Support for click events on the screen buttons.
+- ✅ Support for keyboard events, allowing you to use the calculator with shortcuts.
+- ✅ Use of the Audio API (Audio) to play sounds when pressing keys.
+- ✅ Basic mathematical operations: addition, subtraction, multiplication, and division.
+- ✅ Dynamic display update with mathematical expressions.
 
-# Tecnologias Utilizadas
+# Technologies Used
 
 - ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 - ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-# Como Usar:
+# How to Use:
 
-- Acesse: https://section2-js-course-calculator.vercel.app/
-- Ou clone o repositório:
+- Access: https://section2-js-course-calculator.vercel.app/
+- Or clone the repository:
+
 ```bash
 git clone https://github.com/joao-souza-flooxai/section2-js-course-Calculator.git
 ```
-- Acesse a pasta do projeto:
+- Go to the project folder:
 ```bash
 cd curso-javascript-projeto-calculadora-clone
 ```
-- Abra o arquivo index.html em um navegador.
+- Open the index.html file in a browser.
 
-# Controles
+# Controls
 
-- Clique nos botões da calculadora para inserir números e operações.
+- Click on the calculator buttons to enter numbers and operations.
 
-- Utilize o teclado para inserir valores rapidamente.
+- Use the keyboard to quickly enter values.
 
-- A tecla Enter executa a operação.
+- The Enter key performs the operation.
 
-- A tecla Backspace apaga o último caractere digitado.
-- A tecla Esc zera a calculadora.
-- Teclas de =, +, -, *, / fazem as operações correspondentes.
-- É possível tanto colar como copiar o que está no display da calculadora(ctrl c, ctrl v).
+- The Backspace key deletes the last character typed.
+- The Esc key resets the calculator.
+- =, +, -, *, / keys perform the corresponding operations.
+- It is possible to both paste and copy what is on the calculator display (ctrl c, ctrl v).
 
-# Sons
+# Sounds
 
-Cada botão pressionado toca um som, proporcionando uma experiência mais interativa para o usuário.
+Each button pressed plays a sound, providing a more interactive experience for the user.
 
-# Licença
+# License
 
-Este projeto está licenciado sob a MIT License – sinta-se à vontade para usar e modificar! 
+This project is licensed under the MIT License – feel free to use and modify!
